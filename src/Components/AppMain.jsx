@@ -30,6 +30,7 @@ export default function AppMain() {
         const newModifiedTitle = prompt("Modifica il titolo", titles[titleToChange])
         const updatedTitles = titles.map((title, index) => {
             if (index === titleToChange) {
+
                 return newModifiedTitle
             }
             return title
