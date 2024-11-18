@@ -6,6 +6,7 @@ export default function AppMain() {
     const [titles, setTitles] = useState(titleArray)
     const [newTitles, setNewTitles] = useState('')
 
+
     function addTitle(e) {
         e.preventDefault()
 
@@ -17,37 +18,63 @@ export default function AppMain() {
         setNewTitles('')
     }
 
-    function HandleRemoveTitle(e) {
+    function handleRemoveTitle(e) {
         const titleToRemove = Number(e.target.getAttribute('data-index'))
         const newTitles = titles.filter((title, index) => titleToRemove != index)
 
         setTitles(newTitles)
     }
 
+    function handleChangeTitle(e) {
+        const titleToChange = Number(e.target.getAttribute('data-index'))
+        console.log(titleToChange);
+        const newModifiedTitle = prompt("modifica il titolo")
+        console.log(newModifiedTitle);
+        const updatedTitles = titles.map((title, index) => {
+            if (index === titleToChange) {
+
+            }
+
+
+
+
+        })
+
+
+        setTitles(updatedTitles)
+
+
+    }
+
 
 
     return (
         <main>
+
+
             <div className="container">
-
-                <div className="container">
-                    <form onSubmit={addTitle}>
-                        <div className="input-group my-5">
-                            <input type="text" className="form-control" placeholder="Inserisci un titolo" aria-label="Inserisci un titolo " aria-describedby="button-addon2" value={newTitles} onChange={e => setNewTitle(e.target.value)} />
-                            <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Aggiungi</button>
-                        </div>
-                        <h2 >Titoli Di Oggi</h2>
-                        <ul className="list-group mt-4">
-                            {titles.map((title, index) => <li className="list-group-item d-flex justify-content-between" key={index}>{title}
-                                <button className='btn btn-danger' onClick={HandleRemoveTitle} data-index={index}>Rimuovi Titolo</button>
-                            </li>)}
-
-                        </ul>
+                <form onSubmit={addTitle}>
+                    <div className="input-group my-5">
+                        <input type="text" className="form-control" placeholder="Inserisci un titolo" aria-label="Inserisci un titolo " aria-describedby="button-addon2" value={newTitles} onChange={e => setNewTitles(e.target.value)} />
+                        <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Aggiungi</button>
+                    </div>
+                    <h2 >Titoli Di Oggi</h2>
+                    <ul className="list-group mt-4  ">
+                        {titles.map((title, index) => <li className="list-group-item d-flex justify-content-between mx-4" key={index}>{title}
+                            <div>
+                                <button className='btn btn-warning me-2' onClick={handleChangeTitle} data-index={index}>Cambia</button>
+                                <button className='btn btn-danger' onClick={handleRemoveTitle} data-index={index}>Rimuovi</button>
+                            </div>
 
 
-                    </form>
-                </div>
+                        </li>)}
+
+                    </ul>
+
+
+                </form>
             </div>
+
         </main>
     )
 }
