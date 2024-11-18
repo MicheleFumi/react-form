@@ -26,25 +26,22 @@ export default function AppMain() {
     }
 
     function handleChangeTitle(e) {
-        const titleToChange = Number(e.target.getAttribute('data-index'))
-        console.log(titleToChange);
-        const newModifiedTitle = prompt("modifica il titolo")
-        console.log(newModifiedTitle);
+        const titleToChange = Number(e.target.getAttribute('data-index'));
+        const newModifiedTitle = prompt("Modifica il titolo", titles[titleToChange])
         const updatedTitles = titles.map((title, index) => {
             if (index === titleToChange) {
-
+                return newModifiedTitle
             }
-
-
-
-
-        })
-
-
+            return title
+        });
         setTitles(updatedTitles)
-
-
     }
+
+
+
+
+
+
 
 
 
