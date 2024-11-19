@@ -6,7 +6,8 @@ export default function AppHeader() {
 
     return (
         <header>
-            <h1>RETROGAMERS</h1>
+            <div className="container">  <h1>RETROGAMERS</h1></div>
+
         </header>
     )
 }
